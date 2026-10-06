@@ -1,11 +1,11 @@
 :root { --ink:#111; --gray:#666; --line:#ddd; --accent:#0a5a8c; }
-* { box-sizing: border-box; }
-body { margin:0; font-family: Georgia, "Times New Roman", "Noto Serif SC", "SimSun", serif; color: var(--ink); background:#fff; line-height:1.75; }
+* { box-sizing: border-box; -webkit-text-size-adjust: 100%; }
+body { margin:0; font-family: Georgia, "Times New Roman", "Noto Serif SC", "SimSun", serif; color: var(--ink); background:#fff; line-height:1.75; overflow-wrap: break-word; }
 header.site { border-bottom:2px solid var(--ink); background:#fff; }
 header.site .wrap { max-width:980px; margin:0 auto; padding:14px 20px; display:flex; flex-wrap:wrap; gap:8px; align-items:baseline; justify-content:space-between; }
 header.site .title { font-size:1.25rem; font-weight:700; }
 header.site .title a { color:var(--ink); text-decoration:none; }
-nav.links a { color:var(--accent); text-decoration:none; margin-left:14px; font-size:.95rem; }
+nav.links a { color:var(--accent); text-decoration:none; margin-left:14px; font-size:.95rem; white-space:nowrap; }
 nav.links a:hover { text-decoration:underline; }
 main { max-width:860px; margin:0 auto; padding:28px 20px 80px; }
 h1.doc-title { font-size:1.6rem; line-height:1.4; margin:6px 0 4px; }
@@ -20,10 +20,10 @@ figure { margin:26px 0; text-align:center; }
 figure img { max-width:100%; height:auto; border:1px solid var(--line); }
 figcaption { color:var(--gray); font-size:.9rem; margin-top:8px; }
 ul, ol { padding-left:1.4em; }
-table { border-collapse:collapse; width:100%; margin:16px 0; font-size:.95rem; }
+table { border-collapse:collapse; max-width:100%; margin:16px 0; font-size:.95rem; display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; }
 th, td { border:1px solid #bbb; padding:7px 10px; text-align:left; vertical-align:top; }
 th { background:#f0f0f0; }
-.refs p { text-indent:-1.6em; padding-left:1.6em; font-size:.85rem; color:#333; margin:4px 0; }
+.refs p { text-indent:-1.6em; padding-left:1.6em; font-size:.85rem; color:#333; margin:4px 0; overflow-wrap:anywhere; }
 .legend { background:#fcfcfc; border-left:3px solid #0a5a8c; padding:6px 14px; }
 .pb { border-top:2px dashed #ccc; margin:40px 0 0; }
 .card { border:1px solid #bbb; border-radius:8px; padding:18px 22px; margin:18px 0; }
@@ -31,4 +31,20 @@ th { background:#f0f0f0; }
 .card a { color:var(--accent); text-decoration:none; font-weight:700; }
 .meta { color:var(--gray); font-size:.92rem; }
 footer { border-top:1px solid var(--line); color:var(--gray); font-size:.85rem; max-width:860px; margin:40px auto 0; padding:14px 20px 40px; }
+@media (max-width: 640px) {
+  body { line-height:1.7; }
+  header.site .wrap { padding:10px 14px; }
+  header.site .title { font-size:1.02rem; }
+  nav.links a { margin-left:10px; font-size:.88rem; }
+  main { padding:20px 14px 60px; }
+  h1.doc-title { font-size:1.22rem; }
+  .doc-sub { font-size:.92rem; }
+  h1 { font-size:1.18rem; margin-top:32px; }
+  h2 { font-size:1.05rem; }
+  h3 { font-size:.98rem; }
+  p { font-size:.98rem; }
+  figure { margin:18px 0; }
+  .card { padding:14px 16px; }
+  .note { font-size:.9rem; }
+}
 @media print { nav.links, header.site { display:none; } }

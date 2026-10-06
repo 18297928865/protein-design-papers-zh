@@ -4,7 +4,7 @@ David Baker 实验室(2024 年诺贝尔化学奖)蛋白质从头设计领域的�
 
 | # | 论文 | 期刊 | 状态 |
 |---|------|------|------|
-| 1 | Design of a Novel Globular Protein Fold with Atomic-Level Accuracy(TOP7) | Science 302:1364 (2003) | 🔄 翻译中(原文获取受阻,持续重试) |
+| 1 | Design of a Novel Globular Protein Fold with Atomic-Level Accuracy(TOP7) | Science 302:1364 (2003) | ✅ 完成 |
 | 2 | De novo design of protein logic gates | Science 368:78 (2020) | ✅ 完成 |
 | 3 | Robust deep learning–based protein sequence design using ProteinMPNN | Science 378:49 (2022) | ✅ 完成 |
 | 4 | De novo design of protein structure and function with RFdiffusion | Nature 620:1089 (2023) | ✅ 完成 |
