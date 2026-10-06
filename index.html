@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>蛋白质设计四部曲 · Baker 实验室论文精读</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header class="site"><div class="wrap"><span class="title"><a href="index.html">蛋白质设计四部曲 · Baker 实验室论文精读</a></span><nav class="links"><a href="top7.html">TOP7</a><a href="logic-gates.html">Logic Gates</a><a href="proteinmpnn.html">ProteinMPNN</a><a href="rfdiffusion.html">RFdiffusion</a></nav></div></header>
+<main>
+<h1>蛋白质设计四部曲 · David Baker 实验室论文精读</h1>
+<p class="doc-sub">从物理能量函数到 AI 生成模型:2003–2023,de novo 蛋白质设计的进化之路<br>
+TOP7 → Protein Logic Gates → ProteinMPNN → RFdiffusion(逐段忠实翻译 + 深度解读)</p>
+
+<div class="card">
+<h3>这条时间线讲了什么</h3>
+<p>蛋白质的氨基酸序列决定其三维结构,结构决定功能。<b>从头设计(de novo design)</b>指的是:不依赖天然蛋白作为模板,直接计算出"能稳定折叠成目标结构、并执行目标功能"的全新氨基酸序列。这四篇论文横跨二十年,恰好构成这条技术主线的四个关键台阶:</p>
+<ul>
+<li><b>2003 · TOP7</b>:用 Rosetta 物理能量函数,人工设计出自然界不存在的全新折叠——晶体结构与设计模型偏差仅 ~1.2 Å。证明"计算可以创造可折叠的新蛋白",但一个分子要耗费数月人力,成功率低。</li>
+<li><b>2020 · Protein Logic Gates</b>:从头设计蛋白已不仅是"稳定的静态结构",还能像电子元件一样组成逻辑门(AND/OR/NOT),对输入信号做布尔运算——蛋白质设计走向动态功能与合成生物学回路。</li>
+<li><b>2022 · ProteinMPNN</b>:给定主链骨架,用消息传递神经网络反向设计氨基酸序列——比 Rosetta 快 1.4~200 倍、实验回收率大幅提升、对输入结构更鲁棒。解决了"骨架定了,序列怎么写"的瓶颈。</li>
+<li><b>2023 · RFdiffusion</b>:把结构预测网络 RoseTTAFold 改造成去噪扩散模型,从随机噪声直接"画"出全新主链(单体、binder、对称寡聚体、酶、金属位点),再交给 ProteinMPNN 写序列、AlphaFold 验证——AI 生成流水线完成了闭环。</li>
+</ul>
+<p class="meta">2024 年,David Baker 因计算蛋白质设计与 Demis Hassabis、John Jumper(AlphaFold)共享诺贝尔化学奖。</p>
+</div>
+
+<div class="card">
+<h3>四篇论文之间的联系(读的时候对照着看)</h3>
+<table>
+<thead><tr><th>维度</th><th>TOP7 2003</th><th>Logic Gates 2020</th><th>ProteinMPNN 2022</th><th>RFdiffusion 2023</th></tr></thead>
+<tbody>
+<tr><td>解决的问题</td><td>能否设计自然界没有的折叠?</td><td>设计蛋白能否做"计算元件"?</td><td>骨架给定,序列怎么写?</td><td>骨架本身从哪来?</td></tr>
+<tr><td>核心工具</td><td>Rosetta 物理能量(序列设计+结构预测迭代)</td><td>Rosetta 设计的诱导二聚/别构蛋白对</td><td>消息传递神经网络(序列)</td><td>RoseTTAFold 改造的扩散模型(骨架)</td></tr>
+<tr><td>验证方式</td><td>X 射线晶体学(RMSD 1.2 Å)</td><td>酵母/哺乳动物细胞双荧光报告系统</td><td>大肠杆菌表达+结构解析回收率</td><td>AlphaFold 预测闭环+实验解析</td></tr>
+<tr><td>设计通量</td><td>一个分子 · 数月</td><td>成对元件 · 数月</td><td>秒级/序列 · 高成功率</td><td>分钟级/骨架 · 可批量</td></tr>
+<tr><td>在流水线中的位置</td><td>起点:证明可行性</td><td>功能化:结构→功能</td><td>序列设计器</td><td>骨架生成器</td></tr>
+</tbody>
+</table>
+<p><b>一条主线</b>:TOP7 时代的设计方程是"用物理能量搜索序列空间";Logic Gates 证明这套语言能造出可编程的功能机器;ProteinMPNN 与 RFdiffusion 则分别把"写序列"与"画骨架"两个环节换成深度学习,前者的训练目标是"这根主链最可能的序列",后者直接学习"主链本身如何从噪声中生长"——而它们恰好互为拼图:RFdiffusion 出骨架 → ProteinMPNN 写序列 → AlphaFold/实验验证。Baker 实验室的二十年,就是"物理先证明、AI 后放大"的二十年。</p>
+</div>
+
+<div class="card">
+<h3>四篇论文(点击进入逐段翻译+解读)</h3>
+<ul>
+<li><a href="top7.html">① Design of a Novel Globular Protein Fold with Atomic-Level Accuracy</a>(Kuhlman et al., <i>Science</i> 302:1364, 2003)——TOP7</li>
+<li><a href="logic-gates.html">② De novo design of protein logic gates</a>(Chen et al., <i>Science</i> 368:78, 2020)——蛋白质逻辑门</li>
+<li><a href="proteinmpnn.html">③ Robust deep learning–based protein sequence design using ProteinMPNN</a>(Dauparas et al., <i>Science</i> 378:49, 2022)——序列设计</li>
+<li><a href="rfdiffusion.html">④ De novo design of protein structure and function with RFdiffusion</a>(Watson et al., <i>Nature</i> 620:1089, 2023)——骨架生成</li>
+</ul>
+<p class="meta">每页结构:翻译说明 → 全文逐段翻译(图注全译,图表引用保留英文原样以便对照)→ 译后分析(核心逻辑/新颖点/重要性/与其他三篇的联系/背景知识/术语表)。</p>
+</div>
+
+<div class="card">
+<h3>背景速览(零基础也能跟上)</h3>
+<p><b>Rosetta</b>:Baker 实验室开发的物理能量函数+构象搜索套件,蛋白质设计领域的"第一代引擎"。<b>PDB</b>:蛋白质结构数据库,深度学习模型的训练语料。<b>AlphaFold/RoseTTAFold</b>:深度学习结构预测模型——"序列→结构"的正问题;蛋白质设计是其逆问题。<b>主链(backbone)</b>:多肽链中不变的 N-Cα-C 骨架,决定整体折叠形状;<b>侧链(side chain)</b>:决定化学身份与功能。<b>扩散模型</b>:一类先生成噪声、再学习"逐步去噪"的生成式模型(如 Stable Diffusion);RFdiffusion 将其用于三维主链坐标。</p>
+</div>
+
+</main>
+<footer>本站内容为学习笔记:译文为逐段忠实翻译(参考文献保留英文),仅供学习交流;版权归原作者及出版社所有。若需引用请以原文为准。<br>
+Sources: Kuhlman et al. Science 2003 · Chen et al. Science 2020 · Dauparas et al. Science 2022 · Watson et al. Nature 2023 (Baker lab)</footer>
+</body></html>
