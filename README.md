@@ -16,7 +16,7 @@ David Baker 实验室(2024 年诺贝尔化学奖)蛋白质从头设计领域的�
 
 ## 在线阅读
 
-本仓库通过 GitHub Pages 发布:[网站链接见 Pages 设置](https://pages.github.com/)。
+本仓库通过 GitHub Pages 发布:[网站链接见 Pages 设置](https://18297928865.github.io/protein-design-papers-zh/)。
 
 ## 声明
 
